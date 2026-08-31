@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기 - MyCMS</title>
+</head>
+<body>
+
+<h1>새 글 작성</h1>
+
+<form th:action="@{/admin/posts}" method="post">
+    <div>
+        <label for="title">제목</label>
+        <input type="text" id="title" name="title">
+    </div>
+
+    <div>
+        <label>본문</label>
+        <textarea name="content"
+                  rows="10"
+                  cols="50"
+                  th:text="${post.content}"></textarea>
+    </div>
+
+    <div>
+        <label for="status">상태</label>
+        <select id="status" name="status">
+            <option value="DRAFT">임시저장</option>
+            <option value="PUBLISHED">발행</option>
+        </select>
+    </div>
+
+    <div>
+        <button type="submit">저장</button>
+    </div>
+    <div>
+        <a th:href="@{/admin/posts}">취소</a>
+    </div>
+
+</form>
+
+</body>
+</html>

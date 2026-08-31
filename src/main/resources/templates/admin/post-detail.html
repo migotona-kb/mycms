@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세 - MyCMS</title>
+</head>
+<body>
+
+<h1 th:text="${post.title}"></h1>
+
+<div>
+    상태:
+    <span th:text="${post.status.name() == 'DRAFT' ? '초안' : '공개'}"></span>
+</div>
+
+<div>
+    작성일:
+    <span th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}"></span>
+</div>
+<div>
+    수정일:
+    <span th:text="${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')}"></span>
+</div>
+
+<hr>
+
+<p th:text="${post.content}"></p>
+
+<hr>
+
+<a th:href="@{/admin/posts/{id}/edit(id=${post.id})}">수정</a>
+<a th:href="@{/admin/posts}">목록으로</a>
+
+</body>
+</html>

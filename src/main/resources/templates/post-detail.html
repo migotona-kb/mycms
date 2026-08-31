@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세 - MyCMS</title>
+</head>
+<body>
+
+<h1>게시글 상세</h1>
+
+<p>
+    번호:
+    <span th:text="${post.id}"></span>
+</p>
+
+<p>
+    제목:
+    <span th:text="${post.title}"></span>
+</p>
+<p>
+    내용:
+    <span th:text="${post.content}"></span>
+</p>
+<p>
+    작성일시:
+    <span th:text="${ #temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm') }"></span>
+</p>
+<p>
+    수정일시:
+    <span th:text="${ #temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm') }"></span>
+</p>
+
+<a th:href="@{ /posts/{id}/edit (id=${post.id}) }" > 수정 </a>
+
+<form th:action="@{ /posts/{id}/delete(id=${post.id}) }" method="post">
+    <button type="submit"> DELETE </button>
+</form>
+
+<a href="/">목록으로</a>
+
+</body>
+</html>

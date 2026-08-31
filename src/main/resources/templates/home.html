@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>MyCMS</title>
+</head>
+<body>
+<h1>MyCMS 홈</h1>
+<ul>
+    <li th:each="post: ${posts}">
+        <span th:text="${post.id}"></span>
+        <a th:href="@{/posts/{id}(id=${post.id})}"
+           th:text="${post.title}">
+        </a>
+        <span th:text="${post.status.name() =='DRAFT'?'[임시저장]':'[저장]'}" ></span>
+        <span th:text="${ #temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm') }"></span>
+    </li>
+    <a th:href="@{ /posts/new }">신규생성</a>
+</ul>
+
+</body>
+</html>
